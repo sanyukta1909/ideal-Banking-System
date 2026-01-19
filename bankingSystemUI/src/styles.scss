@@ -1,0 +1,54 @@
+.banking-bg {
+  background: linear-gradient(135deg, #f4f7fb, #e9eff5);
+  min-height: 100vh;
+}
+
+.bank-title {
+  font-weight: 700;
+  color: #0d6efd;
+}
+
+.bank-subtitle {
+  color: #6c757d;
+}
+
+.banking-card {
+  border-radius: 12px;
+  border: none;
+}
+
+.banking-card-header {
+  background: #0d6efd;
+  color: #fff;
+  border-radius: 12px 12px 0 0;
+}
+
+.banking-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.banking-table thead {
+  background-color: #f1f5ff;
+}
+
+.banking-table th {
+  font-weight: 600;
+  color: #0d6efd;
+  border-bottom: 2px solid #dee2e6;
+}
+
+.banking-table td {
+  vertical-align: middle;
+}
+
+.banking-table tbody tr {
+  transition: all 0.2s ease-in-out;
+}
+
+.banking-table tbody tr:hover {
+  background-color: #f8fbff;
+  transform: scale(1.01);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}

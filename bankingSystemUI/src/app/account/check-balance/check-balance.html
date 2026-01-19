@@ -1,0 +1,57 @@
+<div class="container-fluid banking-bg py-4">
+  <div class="container">
+
+    <!-- Card -->
+    <div class="card banking-card shadow-sm">
+
+      <!-- Card Header -->
+      <div class="card-header banking-card-header bg-primary text-white">
+        <h5 class="mb-0">Check Balance</h5>
+      </div>
+
+      <!-- Card Body -->
+      <div class="card-body p-4">
+
+        <form [formGroup]="balanceForm" (ngSubmit)="submit()">
+
+          <!-- Account Number -->
+          <div class="mb-4">
+            <label class="form-label ">Account Number</label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Enter account number"
+              formControlName="accountNumber">
+               <small class="text-danger"
+                  *ngIf="balanceForm.get('accountNumber')?.touched
+                  && balanceForm.get('accountNumber')?.errors?.['required']">
+                  Account number is required
+                </small>
+
+                <small class="text-danger"
+                  *ngIf="balanceForm.get('accountNumber')?.touched
+                  && balanceForm.get('accountNumber')?.errors?.['pattern']">
+                  Enter a valid account number
+                </small>
+          </div>
+
+          <!-- Submit Button -->
+   
+          <button type="submit" class="btn btn-primary w-100 py-2" >Submit </button>
+
+        </form>
+
+            <!-- Success Message -->
+
+          <div  class="alert alert-success mt-3" *ngIf="balance !== null">
+                Available Balance: ₹ {{ balance }}
+            </div>
+
+          <div class="alert alert-danger mt-3" *ngIf="errorMessage">
+            {{ errorMessage }}
+            </div>
+      </div>
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,136 @@
+
+<div class="container-fluid banking-bg py-4">
+  <div class="container">
+
+    <!-- Page Header -->
+    <div class="row mb-4">
+      <div class="col text-center">
+        <h2 class="bank-title">Customer Management</h2>
+        <p class="bank-subtitle">
+          Create and manage bank customers securely
+        </p>
+      </div>
+    </div>
+
+    <div class="row g-4">
+
+      <!-- Create Customer Card -->
+      <div class="col-lg-4 col-md-12">
+        <div class="card banking-card shadow-sm">
+          <div class="card-header banking-card-header">
+            <h5 class="mb-0">Create Customer</h5>
+          </div>
+
+          <div class="card-body">
+            <form [formGroup]="customerForm" (ngSubmit)="submit()">
+
+              <!-- Customer Name -->
+              <div class="mb-3">
+                <label class="form-label">Customer Name</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  formControlName="customerName"
+                  placeholder="Enter customer name"
+                />
+                <small
+                  class="text-danger"
+                  *ngIf="customerForm.get('customerName')?.invalid &&
+                         customerForm.get('customerName')?.touched">
+                  Letters only
+                </small>
+              </div>
+
+              <!-- Email -->
+              <div class="mb-3">
+                <label class="form-label">Email</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  formControlName="email"
+                  placeholder="example@gmail.com"
+                />
+                <small
+                  class="text-danger"
+                  *ngIf="customerForm.get('email')?.invalid &&
+                         customerForm.get('email')?.touched">
+                  Valid Gmail required
+                </small>
+              </div>
+
+              <!-- Mobile -->
+              <div class="mb-3">
+                <label class="form-label">Mobile</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  formControlName="mobile"
+                  placeholder="10 digit mobile number"
+                />
+                <small
+                  class="text-danger"
+                  *ngIf="customerForm.get('mobile')?.invalid &&
+                         customerForm.get('mobile')?.touched">
+                  Must be 10 digits
+                </small>
+              </div>
+
+              <button
+                class="btn btn-primary w-100"
+                [disabled]="customerForm.invalid">
+                Save Customer
+              </button>
+
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- Customer Table -->
+      <div class="col-lg-8 col-md-12">
+        <div class="card banking-card shadow-sm">
+          <div
+            class="card-header banking-card-header d-flex justify-content-between align-items-center">
+            <h5 class="mb-0">Customer List</h5>
+            <span class="badge bg-secondary">
+              {{ customers.length }} Customers
+            </span>
+          </div>
+
+          <div class="card-body table-responsive">
+            <table class="table banking-table">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Mobile</th>
+                  <th>Created</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <tr *ngFor="let c of customers">
+                  <td>{{ c.customerId }}</td>
+                  <td>{{ c.customerName }}</td>
+                  <td>{{ c.email }}</td>
+                  <td>{{ c.mobile }}</td>
+                  <td>{{ c.createdDate | date:'short' }}</td>
+                </tr>
+
+                <tr *ngIf="customers.length === 0">
+                  <td colspan="5" class="text-center text-muted">
+                    No customers found
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+

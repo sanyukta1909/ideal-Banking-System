@@ -1,0 +1,20 @@
+<div class="container-fluid banking-bg py-4">
+  <div class="container">
+
+    <!-- Page Header -->
+    <div class="row mb-4">
+      <div class="col text-center">
+        <h2 class="bank-title">Account Management</h2>
+        <p class="bank-subtitle">Create accounts and check balances securely</p>
+      </div>
+    </div>
+  
+
+    <!-- Mode Buttons -->
+    <div class="btn-group mb-4">
+      <a routerLink="create" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="btn btn-outline-primary">Create Account</a>
+      <a routerLink="balance" routerLinkActive="active" class="btn btn-outline-primary">Check Balance</a>
+    </div>
+    <router-outlet></router-outlet>
+  </div>
+</div>

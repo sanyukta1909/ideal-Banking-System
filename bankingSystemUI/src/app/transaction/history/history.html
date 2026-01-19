@@ -1,0 +1,72 @@
+<div class="card banking-card">
+  <div class="card-header bg-primary text-white">
+    Transaction History
+  </div>
+
+  <div class="card-body">
+    <form [formGroup]="historyForm" (ngSubmit)="getHistory()">
+      <div class="mb-3">
+        <label>Account Number</label>
+        <input
+          class="form-control"
+          formControlName="accountNumber"
+          placeholder="Enter account number">
+          <small class="text-danger"
+            *ngIf="historyForm.get('accountNumber')?.touched
+            && historyForm.get('accountNumber')?.errors?.['required']">
+            Account number is required
+          </small>
+
+      </div>
+
+      <button class="btn btn-primary w-100" [disabled]="loading">
+        {{ loading ? 'Loading...' : 'View History' }}
+      </button>
+    </form>
+
+    <!-- Info / Error Message -->
+    <div class="alert alert-info mt-3" *ngIf="message">{{ message }}</div>
+
+    <!-- History Table -->
+    <div class="table-responsive mt-3" *ngIf="transactions.length > 0">
+      <table class="table table-bordered table-striped align-middle">
+        <thead class="table-light">
+          <tr>
+            <th>Txn ID</th>
+            <th>Account ID</th>
+            <th>Type</th>
+            <th>Amount</th>
+            <th>Ref Account</th>
+            <th>Date</th>
+            <th>Status</th>
+            <th>Balance</th>
+            <th>Remarks</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let tx of transactions">
+            <td>{{ tx.transactionId }}</td>
+            <td>{{ tx.accountId }}</td>
+            <td>{{ tx.transactionType }}</td>
+            <td>{{ tx.amount }}</td>
+            <td>{{ tx.referenceAccount || '-' }}</td>
+            <td>{{ tx.transactionDate | date:'short' }}</td>
+            <td>
+              <span
+                class="badge"
+                [ngClass]="{
+                  'bg-success': tx.status === 'SUCCESS',
+                  'bg-danger': tx.status === 'FAILED'
+                }">
+                {{ tx.status }}
+              </span>
+            </td>
+            <td>{{ tx.balance }}</td>
+            <td>{{ tx.remarks }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+

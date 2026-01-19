@@ -1,0 +1,58 @@
+.hero {
+  position: relative;
+  background: url('/assets/images/bg.jpg') no-repeat center center;
+  background-size: cover;
+  
+  display: flex;
+  min-height: 92.5vh;   /* FULL viewport height */
+  width: 100%;
+  align-items: center;
+  justify-content: left;
+}
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+}
+
+/* Dark overlay */
+.overlay {
+  position: absolute;
+  inset: 0;
+//   background: rgba(0, 0, 0, 0.55); 
+}
+
+/* Content above overlay */
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 700px;
+  padding: 20px;
+}
+
+.hero-content h1 {
+    // color: black;
+  text-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+
+}
+
+.hero-content p {
+  font-size: 1.25rem;
+}
+.hero-content {
+  animation: fadeIn 1s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+

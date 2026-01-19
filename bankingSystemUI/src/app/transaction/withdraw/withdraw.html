@@ -1,0 +1,62 @@
+<div class="card banking-card">
+  <div class="card-header bg-primary text-white">
+    Withdraw
+  </div>
+
+  <div class="card-body">
+    <form [formGroup]="form" (ngSubmit)="submit()">
+
+      <div class="mb-3">
+        <label>Account Number</label>
+        <input
+          class="form-control"
+          formControlName="accountNumber"
+          placeholder="Enter account number">
+          
+            <small class="text-danger"
+              *ngIf="form.get('accountNumber')?.touched
+              && form.get('accountNumber')?.errors?.['required']">
+              Account number is required
+            </small>
+
+            <small class="text-danger"
+              *ngIf="form.get('accountNumber')?.touched
+              && form.get('accountNumber')?.errors?.['pattern']">
+              Enter a valid account number
+            </small>    
+
+      </div>
+
+      <div class="mb-3">
+        <label>Amount</label>
+        <input
+          class="form-control"
+          type="number"
+          formControlName="amount"
+          placeholder="Enter amount">
+          <small class="text-danger"
+            *ngIf="form.get('amount')?.touched
+            && form.get('amount')?.errors?.['required']">
+            Amount is required
+          </small>
+
+          <small class="text-danger"
+            *ngIf="form.get('amount')?.touched
+            && form.get('amount')?.errors?.['min']">
+            Amount must be greater than 0
+          </small>
+
+      </div>
+
+      <button class="btn btn-primary w-100" [disabled]="loading">
+        {{ loading ? 'Processing...' : 'Withdraw' }}
+      </button>
+
+      <div class="alert alert-success mt-2" *ngIf="message">
+        {{ message }}
+      </div>
+
+    </form>
+  </div>
+</div>
+

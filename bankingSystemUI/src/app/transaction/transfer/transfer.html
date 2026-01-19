@@ -1,0 +1,72 @@
+
+<div class="card banking-card">
+  <div class="card-header bg-primary text-white">
+    Transfer
+  </div>
+
+  <div class="card-body">
+    <form [formGroup]="form" (ngSubmit)="submit()">
+
+      <div class="mb-3">
+        <label>From Account</label>
+        <input class="form-control" formControlName="fromAccount" placeholder="Enter sender account number">
+        <small class="text-danger"
+          *ngIf="form.get('fromAccount')?.touched
+          && form.get('fromAccount')?.errors?.['required']">
+          From account is required
+        </small>
+
+        <small class="text-danger"
+          *ngIf="form.get('fromAccount')?.touched
+          && form.get('fromAccount')?.errors?.['pattern']">
+          Invalid account number
+        </small>
+
+      </div>
+
+      <div class="mb-3">
+        <label>To Account</label>
+        <input class="form-control" formControlName="toAccount" placeholder="Enter receiver account number"> 
+      <div
+          class="text-danger"
+          *ngIf=" form.errors?.['sameAccount'] && form.get('fromAccount')?.value && form.get('toAccount')?.value">
+          From Account and To Account cannot be the same
+        </div>
+
+
+         <small class="text-danger"
+          *ngIf="form.get('toAccount')?.touched
+          && form.get('toAccount')?.errors?.['required']">
+          From account is required
+        </small>
+    </div>
+
+      <div class="mb-3">
+        <label>Amount</label>
+        <input class="form-control" type="number" formControlName="amount" placeholder="Enter amount">
+        <small class="text-danger"
+            *ngIf="form.get('amount')?.touched
+            && form.get('amount')?.errors?.['required']">
+            Amount is required
+          </small>
+
+          <small class="text-danger"
+            *ngIf="form.get('amount')?.touched
+            && form.get('amount')?.errors?.['min']">
+            Amount must be greater than 0
+          </small>
+
+      </div>
+
+      <button class="btn btn-primary w-100" [disabled]="loading">
+        {{ loading ? 'Processing...' : 'Transfer' }}
+      </button>
+
+      <div class="alert alert-success mt-2" *ngIf="message">
+        {{ message }}
+      </div>
+
+    </form>
+  </div>
+</div>
+
