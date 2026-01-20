@@ -1,23 +1,5 @@
-Front end 
-  tech Stack : HTML , css , JS , TS , Angualr 
-  as soon as you clone , -- > the n run the npm install 
-
-  
-Back End 
- import to STS
- Update the MAVEN project 
- Run as spring boot  project 
-
-
-
- Test all the below end poinet in Swggwer : add the swagger url 
-
-list all the Endd points 
-
-
 # Banking System Management
-
-A full-stack banking application built using Spring Boot and Angular.
+A full-stack banking application developed using Spring Boot for the backend and Angular for the frontend. It provides secure and efficient management of customers, accounts, and financial transactions through a RESTful architecture. The application demonstrates end-to-end integration, validation, and real-time user interaction.A full-stack banking application built using Spring Boot and Angular.
 
 ## Tech Stack
 
@@ -118,6 +100,8 @@ POST /api/transactions/deposit
 
 - File → Import → Existing Maven Project
 
+- Update the MAVEN project 
+
 - Select the extracted project folder
 
 Create a database in MySQL:
@@ -170,6 +154,7 @@ Application Access
 Application runs on: http://localhost:8080
 
 APIs can be tested using Postman
+Test all the below end point in Swggwer : add the swagger url 
 
 
 
